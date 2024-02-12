@@ -1,0 +1,19 @@
+{
+  "name": "api_controlacademico",
+  "version": "1.0.0",
+  "description": "Proyecto de un control academico de maestros y alumnos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kvelasquez-2019504/API_ControlAcademico.git"
+  },
+  "author": "Kenneth Velásquez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kvelasquez-2019504/API_ControlAcademico/issues"
+  },
+  "homepage": "https://github.com/kvelasquez-2019504/API_ControlAcademico#readme"
+}
