@@ -1,7 +1,7 @@
 {
   "name": "api_controlacademico",
   "version": "1.0.0",
-  "description": "Proyecto de un control academico de maestros y alumnos",
+  "description": "API de un control academico de maestros y estudiantes",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
