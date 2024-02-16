@@ -39,6 +39,10 @@ const asignarEstudianteACurso= async(req,res=response)=>{
     });
 }
 
+const estudiantesPut = async (req,res=response)=>{
+    
+}
+
 const estudiantesPost = async (req, res = response) => {
     const { nombres, apellidos, correo, grado, edad, curso1, curso2 = "", curso3 = "", estado } = req.body;
     let numeroCursos = 0;
