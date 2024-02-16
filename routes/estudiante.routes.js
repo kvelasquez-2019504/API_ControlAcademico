@@ -1,5 +1,6 @@
 const {Router} = require('express');
-const {estudiantesDelete,
+const {verMisCursos,
+    estudiantesDelete,
     estudiantesPut,
     asignarEstudianteACurso,
     estudiantesGet,
@@ -14,6 +15,13 @@ const {check} = require('express-validator');
  const router = Router();
 
 router.get("/",estudiantesGet);
+
+router.get("/verCursos/:id",[
+    check("id","El id no es un formato válido de MongoDB").isMongoId(),
+    check("id").custom(existeEstudianteById),
+    validarCampos
+],verMisCursos);
+
 router.post("/", [
     check("nombres","Los nombres son obligatorios").not().isEmpty(),
     check("apellidos","Los apellidos son obligatorios").not().isEmpty(),
