@@ -27,6 +27,10 @@ const maestrosPut = async (req,res=response)=>{
     });
 } 
 
+const maestrosDelete = async(req,res=response)=>{
+    
+}
+
 const maestrosPost=async(req,res=response)=>{
     const { nombres, apellidos, correo, grado, edad,cursos, estado } = req.body;
     const maestro = new Maestro({ nombres, apellidos, correo, grado, edad, cursos, estado });
