@@ -4,7 +4,7 @@ const Estudiante = require('../models/estudiante');
 const estudiantesGet = async (req,res=response)=>{
     const {limite, desde}=req.query;
     const query = {estado:true};
-    
+
     const [total, estudiantes]= await Promise.all([
         Estudiante.countDocuments(query),
         Estudiante.find(query)
@@ -15,6 +15,11 @@ const estudiantesGet = async (req,res=response)=>{
         total,
         estudiantes
     });
+}
+
+
+const estudiantesPost=async ()=>{
+    
 }
 module.exports={
     estudiantesGet
