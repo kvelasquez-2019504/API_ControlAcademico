@@ -25,9 +25,17 @@ const EstudianteSchema=Schema({
         type:Number,
         defaul:0
     },
-    cursosAsignados:{
+    curso1:{
         type:String,
-        default:""
+        required:[true, "Es obligatorio tener 1 curso"]
+    },
+    curso2:{
+        type:String,
+        defaul:""
+    },
+    curso3:{
+        type:String,
+        defaul:""
     },
     estado:{
         type:Boolean,
