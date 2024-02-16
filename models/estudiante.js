@@ -37,6 +37,10 @@ const EstudianteSchema=Schema({
         type:String,
         defaul:""
     },
+    rol:{
+        type:String,
+        
+    },
     estado:{
         type:Boolean,
         default:true
