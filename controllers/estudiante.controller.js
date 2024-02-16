@@ -17,6 +17,27 @@ const estudiantesGet = async (req, res = response) => {
     });
 }
 
+const asignarEstudianteACurso= async(req,res=response)=>{
+    const {id}=req.params;
+    const {_id,nombres,apellidos,correo,grado,edad,estado,...resto}=req.body;
+    let numeroCursos = 0;
+    if (resto.curso1) {
+        numeroCursos += 1;
+    }
+    if (resto.curso2) {
+        numeroCursos += 1;
+    }
+    if (resto.curso3) {
+        numeroCursos += 1;
+    }
+    resto.cantidadCursos=numeroCursos;
+    await Estudiante.findByIdAndUpdate(id,resto);
+    const estudianteNew = await Estudiante.findOne({_id:id});
+    res.status(200).json({
+        msg:"El estudiante pudo asignarse a nuevo/os cursos",
+        estudianteNew
+    });
+}
 
 const estudiantesPost = async (req, res = response) => {
     const { nombres, apellidos, correo, grado, edad, curso1, curso2 = "", curso3 = "", estado } = req.body;
@@ -37,7 +58,9 @@ const estudiantesPost = async (req, res = response) => {
         estudiante
     });
 }
+
 module.exports = {
+    asignarEstudianteACurso,
     estudiantesPost,
     estudiantesGet
 }
