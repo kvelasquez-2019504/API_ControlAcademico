@@ -9,6 +9,7 @@ class Server{
         this.port = process.env.PORT;
         this.usuariosPath = '/api/login';
         this.estudiantesPath = '/api/estudiantes';
+        this.maestrosPath= '/api/maestros'
         this.conectarDB();
 
         this.middlewares();
@@ -28,6 +29,7 @@ class Server{
 
     routes(){
         this.app.use(this.estudiantesPath, require('../routes/estudiante.routes'));
+        this.app.use(this.maestrosPath, require('../router/maetros.router'))
     }
 
     listen(){
