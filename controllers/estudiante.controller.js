@@ -40,7 +40,14 @@ const asignarEstudianteACurso= async(req,res=response)=>{
 }
 
 const estudiantesPut = async (req,res=response)=>{
-    
+    const {id}=req.params;
+    const {_id,estado,grado,correo,cantidadCursos,curso1,curso2,curso3,...resto}=req.body;
+    await Estudiante.findByIdAndUpdate(id,resto);
+    const estudianteNew = await Estudiante.findOne({_id:id});
+    res.status(200).json({
+        msg:"Se ha actualizado el estudiante",
+        estudianteNew
+    });
 }
 
 const estudiantesPost = async (req, res = response) => {
@@ -63,7 +70,7 @@ const estudiantesPost = async (req, res = response) => {
     });
 }
 
-module.exports = {
+module.exports = {estudiantesPut,
     asignarEstudianteACurso,
     estudiantesPost,
     estudiantesGet
