@@ -16,6 +16,17 @@ const maestrosGet= async (req,res = response)=>{
     });
 }
 
+const maestrosPut = async (req,res=response)=>{
+    const {id}=req.params;
+    const {_id,estado,grado,correo,...resto}=req.body;
+    await Maestro.findByIdAndUpdate(id,resto);
+    const maestroNew = await Maestro.findOne({_id:id});
+    res.status(200).json({
+        msg:"Se ha actualizado el maestro",
+        maestroNew
+    });
+} 
+
 const maestrosPost=async(req,res=response)=>{
     const { nombres, apellidos, correo, grado, edad,cursos, estado } = req.body;
     const maestro = new Maestro({ nombres, apellidos, correo, grado, edad, cursos, estado });
@@ -25,6 +36,6 @@ const maestrosPost=async(req,res=response)=>{
     });
 }
 
-module.exports={maestrosPost,
+module.exports={maestrosPut,maestrosPost,
     maestrosGet
 }
