@@ -17,7 +17,14 @@ const usuariosGet= async(req,res=response)=>{
 }
 
 const usuariosPut=async(req,res=response)=>{
-    
+    const {id}=req.params;
+    const {_id,estado,rol,...resto}=req.body;
+    await Usuario.findByIdAndUpdate(id,resto);
+    const usuarioNew=await Usuario.findOne({_id:id});
+    res.status(200).json({
+        msg:"Se ha actualizado el usuario",
+        usuarioNew
+    });
 }
 
 const usuariosPost=async(req,res= response)=>{
@@ -29,6 +36,7 @@ const usuariosPost=async(req,res= response)=>{
     });
 }
 
-module.exports= {usuariosPost,
+module.exports= {usuariosPut,
+    usuariosPost,
     usuariosGet
 }

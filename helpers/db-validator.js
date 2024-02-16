@@ -1,5 +1,6 @@
 const Estudiante = require('../models/estudiante');
-const Maestro = require("../models/maestros")
+const Maestro = require("../models/maestros");
+const Usuario = require("../models/usuario");
 var estudianteId = "";
 
 const existeEmailEstudiante = async (correo = "") => {
@@ -16,7 +17,7 @@ const existenteEmailMaestro = async (correo = "") => {
     }
 }
 
-const existenciaMaestroById= async(id="")=>{
+const existenciaMaestroById = async (id = "") => {
     const existeMaestro = await Maestro.findOne({ _id: id });
     if (!existeMaestro) {
         throw new Error(`El maestro con el ${id} no existe`);
@@ -27,8 +28,34 @@ const existeEstudianteById = async (id = "") => {
     const existeEstudiante = await Estudiante.findOne({ _id: id });
     estudianteId = id;
     if (!existeEstudiante) {
-        throw new Error(`El usuario con el ${id} no existe`);
+        throw new Error(`El estudiante con el ${id} no existe`);
     }
+}
+
+const existeUsuarioById = async (id = "") => {
+    const existeUsuario = await Usuario.findOne({ _id: id });
+    if (!existeUsuario) {
+        throw new Error(`El usuario con id ${id} no existe`);
+    }
+}
+
+const existeCorreoUsuario = async (correoUsuario = "") => {
+    const existeEmailUsuario = await Usuario.findOne({ correoUsuario: correoUsuario });
+    if (existeEmailUsuario) {
+        throw new Error(`El usuario con el correo ${correoUsuario} ya existe`);
+    }
+}
+
+const validarCorreoUsuario = async (correoUsuario = "") => {
+    const emailEstudiante = await Estudiante.findOne({ correo: correoUsuario });
+    const emailMaestro = await Maestro.findOne({ correo: correoUsuario });
+
+    if (!emailEstudiante) {
+        if (!emailMaestro) {
+            throw new Error(`El correo ingresado no corresponde a Estudiante ni profesor`);
+        }
+    }
+
 }
 
 const existeCurso1 = async (curso1 = "") => {
@@ -58,7 +85,11 @@ const existeCurso3 = async (curso3 = "") => {
     }
 }
 
-module.exports = {existenteEmailMaestro,
+module.exports = {
+    validarCorreoUsuario,
+    existeCorreoUsuario,
+    existeUsuarioById,
+    existenteEmailMaestro,
     existenciaMaestroById,
     existeCurso1,
     existeCurso2,

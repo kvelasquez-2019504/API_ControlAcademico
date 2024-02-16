@@ -18,7 +18,7 @@ const UsuarioSchema = Schema({
         required:[true, "El Rol es obligatorio"]
     },
     estado:{
-        type:String,
+        type:Boolean,
         default:true
     }
 });
