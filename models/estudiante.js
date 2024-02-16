@@ -28,7 +28,11 @@ const EstudianteSchema=Schema({
     cursosAsignados:{
         type:String,
         default:""
+    },
+    estado:{
+        type:Boolean,
+        default:true
     }
 });
 
-module.exports=Estudiante;
+module.exports=model('Estudiante',EstudianteSchema);

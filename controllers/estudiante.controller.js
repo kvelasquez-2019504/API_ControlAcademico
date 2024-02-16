@@ -4,8 +4,9 @@ const Estudiante = require('../models/estudiante');
 const estudiantesGet = async (req,res=response)=>{
     const {limite, desde}=req.query;
     const query = {estado:true};
+    
     const [total, estudiantes]= await Promise.all([
-        Estudiante.countDocument(query),
+        Estudiante.countDocuments(query),
         Estudiante.find(query)
         .skip(Number(desde))
         .limit(Number(limite))
