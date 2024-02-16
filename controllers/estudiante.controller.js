@@ -50,6 +50,18 @@ const estudiantesPut = async (req,res=response)=>{
     });
 }
 
+const estudiantesDelete = async (req, res=response)=>{
+    const {id}=req.params;
+    await Estudiante.findByIdAndUpdate(id,{estado:false});
+    const estudiante = await Estudiante.findOne({_id:id});
+    const estudianteEliminado = req.estudiante;
+    res.status(200).json({
+        msg:"Se ha eliminado el estudiante",
+        estudiante,
+        estudianteEliminado
+    });
+}
+
 const estudiantesPost = async (req, res = response) => {
     const { nombres, apellidos, correo, grado, edad, curso1, curso2 = "", curso3 = "", estado } = req.body;
     let numeroCursos = 0;
@@ -70,7 +82,8 @@ const estudiantesPost = async (req, res = response) => {
     });
 }
 
-module.exports = {estudiantesPut,
+module.exports = {estudiantesDelete,
+    estudiantesPut,
     asignarEstudianteACurso,
     estudiantesPost,
     estudiantesGet

@@ -1,5 +1,6 @@
 const {Router} = require('express');
-const {estudiantesPut,
+const {estudiantesDelete,
+    estudiantesPut,
     asignarEstudianteACurso,
     estudiantesGet,
     estudiantesPost} = require('../controllers/estudiante.controller');
@@ -46,5 +47,11 @@ router.put("/actualizar/:id",[
     check("edad","La edad es obligatoria").isNumeric(),
     validarCampos
 ],estudiantesPut);
+
+router.delete("/delete/:id",[
+    check("id","El id no es un formato válido de MongoDB").isMongoId(),
+    check("id").custom(existeEstudianteById),
+    validarCampos
+],estudiantesDelete);
 
  module.exports = router;
