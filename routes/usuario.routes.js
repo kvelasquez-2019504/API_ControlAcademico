@@ -1,7 +1,8 @@
 const {Router}=require('express');
 const {check} = require('express-validator');
 const {validarCampos}=require('../middlewares/validar-campos');
-const {usuariosPut,
+const {usuarioDelete,
+    usuariosPut,
     usuariosPost,
     usuariosGet} = require("../controllers/usuario.controller");
 const {validarCorreoUsuario,
@@ -20,6 +21,12 @@ router.put("/:id",[
     check("claveUsuario","La contraseña es obligatoria y mayor a 6 caracteres").isLength({min:6}),
     validarCampos
 ],usuariosPut);
+
+router.delete("/delete/:id",[
+    check("id","El id ingresado no es valido para MONGO").isMongoId(),
+    check("id").custom(existeUsuarioById),
+    validarCampos
+],usuarioDelete);
 
 router.post("/",[
     check("nombreUsuario","El nombre es obligatorio").not().isEmpty(),
