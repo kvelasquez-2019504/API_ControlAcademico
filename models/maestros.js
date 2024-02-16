@@ -1,6 +1,6 @@
 const {Schema,model}= require('mongoose');
 
-const MaestroSchema = ({
+const MaestroSchema = Schema({
     nombres:{
         type:String,
         required:[true, "Tus nombres son obligatorios"]
@@ -22,8 +22,8 @@ const MaestroSchema = ({
         required:[true, "La edad es obligatoria"]
     },
     cursos:{
-        type:String,
-        default:[""]
+        type:Array,
+        required:[true,"Las clases son obligatorias"]
     },
     estado:{
         type:Boolean,
