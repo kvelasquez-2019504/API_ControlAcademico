@@ -28,7 +28,15 @@ const maestrosPut = async (req,res=response)=>{
 } 
 
 const maestrosDelete = async(req,res=response)=>{
-    
+    const {id}=req.params;
+    await Maestro.findByIdAndUpdate(id,{estado:false});
+    const maestro = await Maestro.findOne({_id:id});
+    const maestroEliminado = req.maestro;
+    res.status(200).json({
+        msg:"Se ha eliminado el maestro",
+        maestro,
+        maestroEliminado
+    });
 }
 
 const maestrosPost=async(req,res=response)=>{
@@ -40,6 +48,6 @@ const maestrosPost=async(req,res=response)=>{
     });
 }
 
-module.exports={maestrosPut,maestrosPost,
+module.exports={maestrosDelete,maestrosPut,maestrosPost,
     maestrosGet
 }
