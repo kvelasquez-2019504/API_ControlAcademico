@@ -13,6 +13,10 @@ const UsuarioSchema = Schema({
         type:String,
         required:[true, "La clave es obligatoria por seguridad"]
     },
+    rol:{
+        type:String,
+        required:[true, "El Rol es obligatorio"]
+    },
     estado:{
         type:String,
         default:true
