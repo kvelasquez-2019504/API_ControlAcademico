@@ -17,6 +17,16 @@ const cursosGet=async(req,res=response)=>{
     });
 }
 
-module.exports={
+const cursosPost=async(req,res=response)=>{
+    const {nombre} =req.body;
+    const curso = new Curso({nombre});
+    await curso.save();
+    res.status(200).json({
+        msg:"El curso se ha guardado",
+        curso
+    });
+}
+
+module.exports={cursosPost,
     cursosGet
 }
