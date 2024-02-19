@@ -1,0 +1,89 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Cursos",
+    "dateExported": "2024-02-19T05:41:37.544Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "d96e5b00-cee1-421c-9b26-f80fb403b2c9",
+            "colId": "fac664a9-4e48-4326-a750-ff6b6022bc63",
+            "containerId": "",
+            "name": "cursosGet",
+            "url": "http://localhost:3000/api/cursos",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-02-19T00:54:50.589Z",
+            "modified": "2024-02-19T00:55:43.405Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "54e4dc9f-9447-496d-b7b8-192dba7ee255",
+            "colId": "fac664a9-4e48-4326-a750-ff6b6022bc63",
+            "containerId": "",
+            "name": "cursosGetById",
+            "url": "http://localhost:3000/api/cursos/65d2be5ba5ef60c59478cc88",
+            "method": "GET",
+            "sortNum": 15000,
+            "created": "2024-02-19T04:13:10.540Z",
+            "modified": "2024-02-19T04:15:43.556Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "775d13c7-2c5c-4ef6-8602-ebd8fadfdc33",
+            "colId": "fac664a9-4e48-4326-a750-ff6b6022bc63",
+            "containerId": "",
+            "name": "cursosPost",
+            "url": "http://localhost:3000/api/cursos",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-02-19T01:00:23.824Z",
+            "modified": "2024-02-19T01:58:04.945Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\":\"ARTES\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "bc43c92a-ed20-4d0c-8c3d-ae5be959e948",
+            "colId": "fac664a9-4e48-4326-a750-ff6b6022bc63",
+            "containerId": "",
+            "name": "cursosPut",
+            "url": "http://localhost:3000/api/cursos/65d2b5ac8c23401d40a7b637",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2024-02-19T02:34:19.944Z",
+            "modified": "2024-02-19T03:30:03.075Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\":\"INGLES\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "8aac7c4d-69ea-4589-a00f-ab88511101a6",
+            "colId": "fac664a9-4e48-4326-a750-ff6b6022bc63",
+            "containerId": "",
+            "name": "cursosDelete",
+            "url": "http://localhost:3000/api/cursos/65d2be5ba5ef60c59478cc88",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2024-02-19T03:47:12.189Z",
+            "modified": "2024-02-19T04:05:20.102Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
