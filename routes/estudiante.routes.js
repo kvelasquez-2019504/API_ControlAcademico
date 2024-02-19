@@ -4,7 +4,9 @@ const {verMisCursos,
     estudiantesPut,
     asignarEstudianteACurso,
     estudiantesGet,
+    estudiantesGetById,
     estudiantesPost} = require('../controllers/estudiante.controller');
+
 const {existeCurso1,
     existeCurso2,
     existeCurso3,
@@ -15,6 +17,12 @@ const {check} = require('express-validator');
  const router = Router();
 
 router.get("/",estudiantesGet);
+
+router.get("/:id",[
+    check("id","El id no es un formato válido de MongoDB").isMongoId(),
+    check("id").custom(existeEstudianteById),
+    validarCampos
+],estudiantesGetById);
 
 router.get("/verCursos/:id",[
     check("id","El id no es un formato válido de MongoDB").isMongoId(),

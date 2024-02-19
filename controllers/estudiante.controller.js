@@ -17,6 +17,14 @@ const estudiantesGet = async (req, res = response) => {
     });
 }
 
+const estudiantesGetById = async (req,res=response)=>{
+    const {id}=req.params;
+    const estudiante = await Estudiante.findOne({_id:id});
+    res.status(200).json({
+        estudiante
+    });
+}
+
 const asignarEstudianteACurso= async(req,res=response)=>{
     const {id}=req.params;
     const {_id,nombres,apellidos,correo,grado,edad,estado,...resto}=req.body;
@@ -99,5 +107,6 @@ module.exports = {verMisCursos,
     estudiantesPut,
     asignarEstudianteACurso,
     estudiantesPost,
+    estudiantesGetById,
     estudiantesGet
 }
