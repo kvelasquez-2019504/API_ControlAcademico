@@ -62,11 +62,9 @@ const estudiantesDelete = async (req, res=response)=>{
     const {id}=req.params;
     await Estudiante.findByIdAndUpdate(id,{estado:false});
     const estudiante = await Estudiante.findOne({_id:id});
-    const estudianteEliminado = req.estudiante;
     res.status(200).json({
         msg:"Se ha eliminado el estudiante",
-        estudiante,
-        estudianteEliminado
+        estudiante
     });
 }
 

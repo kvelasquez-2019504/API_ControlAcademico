@@ -16,6 +16,15 @@ const usuariosGet = async (req, res = response) => {
     });
 }
 
+const usuariosGetById = async (req, res = response) => {
+    const { id } = req.params;
+    const usuario = await Usuario.findOne({ _id: id });
+    res.status(200).json({
+        msg: "Se ha actualizado el usuario",
+        usuario
+    });
+}
+
 const usuariosPut = async (req, res = response) => {
     const { id } = req.params;
     const { _id, estado, rol, ...resto } = req.body;
@@ -30,10 +39,10 @@ const usuariosPut = async (req, res = response) => {
 const usuarioDelete = async (req, res = response) => {
     const { id } = req.params;
     await Usuario.findByIdAndUpdate(id,{ estado: false });
-    const usuarioNew = await Usuario.findOne({_id:id});
+    const usuario = await Usuario.findOne({_id:id});
     res.status(200).json({
         msg: "Se ha eliminado el usuario",
-        usuarioNew
+        usuario
     });
 }
 
@@ -49,5 +58,6 @@ const usuariosPost = async (req, res = response) => {
 module.exports = {usuarioDelete,
     usuariosPut,
     usuariosPost,
+    usuariosGetById,
     usuariosGet
 }
