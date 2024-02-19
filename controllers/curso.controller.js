@@ -1,13 +1,13 @@
 const {response, json} = require("express");
 const Curso = require("../models/curso")
 
-const cursosGet=async()=>{
+const cursosGet=async(req,res=response)=>{
     const { limite, desde } = req.query;
     const query = { estado: true };
 
     const [total, cursos] = await Promise.all([
-        Estudiante.countDocuments(query),
-        Estudiante.find(query)
+        Curso.countDocuments(query),
+        Curso.find(query)
             .skip(Number(desde))
             .limit(Number(limite))
     ]);
@@ -15,4 +15,8 @@ const cursosGet=async()=>{
         total,
         cursos
     });
+}
+
+module.exports={
+    cursosGet
 }
