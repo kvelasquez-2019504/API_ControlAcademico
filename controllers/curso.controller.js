@@ -27,6 +27,18 @@ const cursosPost=async(req,res=response)=>{
     });
 }
 
-module.exports={cursosPost,
+const cursosPut = async (req, res=response)=>{
+    const {id}= req.params;
+    const {nombre} = req.body;
+    await Curso.findByIdAndUpdate(id,{nombre});
+    const cursoNew = await Curso.findOne({_id:id});
+    res.status(200).json({
+        msg:"Se ha actualizado el curso",
+        cursoNew
+    });
+}
+
+module.exports={cursosPut,
+    cursosPost,
     cursosGet
 }

@@ -1,6 +1,7 @@
 const Estudiante = require('../models/estudiante');
 const Maestro = require("../models/maestros");
 const Usuario = require("../models/usuario");
+const Curso = require('../models/curso');
 var estudianteId = "";
 
 const existeEmailEstudiante = async (correo = "") => {
@@ -36,6 +37,13 @@ const existeUsuarioById = async (id = "") => {
     const existeUsuario = await Usuario.findOne({ _id: id });
     if (!existeUsuario) {
         throw new Error(`El usuario con id ${id} no existe`);
+    }
+}
+
+const existeCursoById= async(id="")=>{
+    const existeCurso = await Curso.findOne({_id:id});
+    if(!existeCurso){
+        throw new Error(`El curso con id ${id} no existe`);
     }
 }
 
@@ -85,7 +93,7 @@ const existeCurso3 = async (curso3 = "") => {
     }
 }
 
-module.exports = {
+module.exports = {existeCursoById,
     validarCorreoUsuario,
     existeCorreoUsuario,
     existeUsuarioById,
