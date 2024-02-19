@@ -1,5 +1,6 @@
-const {Router} = require('express');
-const {cursosPut,
+const {Router, response} = require('express');
+const {cursosDelete,
+    cursosPut,
     cursosPost,
     cursosGet} = require('../controllers/curso.controller');
 const {validarCampos}=require('../middlewares/validar-campos');
@@ -19,5 +20,11 @@ router.put("/:id",[
     check("id").custom(existeCursoById),
     validarCampos
 ],cursosPut);
+
+router.delete("/:id",[
+    check("id","El id no corresponde a un ID de Mongo").isMongoId(),
+    check("id").custom(existeCursoById),
+    validarCampos
+],cursosDelete);
 
 module.exports =router;

@@ -38,7 +38,18 @@ const cursosPut = async (req, res=response)=>{
     });
 }
 
-module.exports={cursosPut,
+const cursosDelete = async (req, res=response)=>{
+    const {id}= req.params;
+    await Curso.findByIdAndUpdate(id,{estado:false});
+    const curso = await Curso.findOne({_id:id});
+    res.status(200).json({
+        msg:"Se ha eliminado el curso",
+        curso
+    });
+}
+
+module.exports={cursosDelete,
+    cursosPut,
     cursosPost,
     cursosGet
 }
