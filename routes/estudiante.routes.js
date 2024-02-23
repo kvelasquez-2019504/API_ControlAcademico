@@ -1,7 +1,8 @@
 const {Router} = require('express');
 const {validarCampos}=require('../middlewares/validar-campos');
 const {check} = require('express-validator');
-const {verMisCursos,estudiantesPut,
+const {estudiantesDelete,verMisCursos,
+    estudiantesPut,
     estudiantesPost} =require('../controllers/estudiante.controller');
 const {verificarCursosRepetidos,
     verificarIdCursos,
@@ -27,6 +28,12 @@ router.put('/:id',[
     check("cursos").custom(verificarCursosRepetidos), 
     validarCampos
 ],estudiantesPut);
+
+router.delete('/:id',[
+    check("id","El ID debe ser de MongoDB").isMongoId(),
+    check("id").custom(existeEstudianteById),
+    validarCampos
+],estudiantesDelete);
 
 router.post('/',[
     check("nombres", "Los nombres son obligatorios").not().isEmpty(),
