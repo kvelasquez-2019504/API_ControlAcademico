@@ -19,7 +19,7 @@ const EstudianteSchema=Schema({
     },
     cursos:{
         type:Array,
-        default:["","",""]
+        default:[]
     },
     rol:{
         type:String,

@@ -1,7 +1,6 @@
 const Curso = require('../models/curso');
 const Estudiante = require('../models/estudiante');
 const Maestro = require("../models/maestros");
-
 const existeEmailEstudiante = async (correo = "") => {
     const existeEmail = await Estudiante.findOne({ correo });
     if (existeEmail) {
@@ -23,6 +22,13 @@ const existeCursoById = async (id = '') => {
     }
 }
 
+const validarNombreCurso = async (nombre = "") => {
+    const existeCurso = await Curso.findOne({ nombre: nombre });
+    if (existeCurso) {
+        throw new Error(`El curso ${nombre} ya existe`);
+    }
+}
+
 const cantidadDeCursos = async (cursos = [""]) => {
     if (cursos && cursos.length > 3) {
         throw new Error(`Solo debe ingresar 3 cursos`);
@@ -30,14 +36,22 @@ const cantidadDeCursos = async (cursos = [""]) => {
 }
 
 const verificarIdCursos = async (cursos = [""]) => {
-    var vuelta=0;
     for (let buscarIdCurso of cursos) {
-        vuelta++;
-        const existeCurso = await Curso.findById({_id:buscarIdCurso});
-        if(!existeCurso){
+        const existeCurso = await Curso.findById({ _id: buscarIdCurso });
+        if (!existeCurso) {
             throw new Error(`No existe el curso con ID: ${buscarIdCurso}`);
         }
     }
+}
+
+const verificarCursosRepetidos=async(cursos=[""])=>{
+    let existe;
+    cursos.forEach(idCurso =>{
+        existe = cursos.filter(curso=> curso==idCurso).length;
+        if(existe>1){
+            throw new Error(`El curso ${idCurso} se repite ${existe} veces.`);
+        }
+    });   
 }
 
 const existeEstudianteById = async (id = "") => {
@@ -53,5 +67,7 @@ module.exports = {
     existeCursoById,
     cantidadDeCursos,
     verificarIdCursos,
+    validarNombreCurso,
+    verificarCursosRepetidos,
     existeEstudianteById
 }

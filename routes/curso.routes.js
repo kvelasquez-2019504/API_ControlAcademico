@@ -5,7 +5,7 @@ const {cursosDelete,
     cursosGetById,
     cursosGet} = require('../controllers/curso.controller');
 const {validarCampos}=require('../middlewares/validar-campos');
-const {existeCursoById} = require('../helpers/db-validator');
+const {existeCursoById,validarNombreCurso} = require('../helpers/db-validator');
 const {check} =require('express-validator');
 const router = Router();
 
@@ -19,6 +19,7 @@ router.get("/:id",[
 
 router.post('/', [
     check("nombre","El nombre de la materia es obligatorio").not().isEmpty(),
+    check("nombre").custom(validarNombreCurso),
     validarCampos
 ],cursosPost);
 
