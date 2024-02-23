@@ -13,17 +13,21 @@ const MaestroSchema = Schema({
         type:String,
         required:[true, "El correo es obligatorio"]
     },
+    password:{
+        type:String,
+        required:[true, "El password es obligatorio"]
+    },
     grado:{
         type:String,
         required:[true,"El grado es requerido"]
     },
-    edad:{
-        type:Number,
-        required:[true, "La edad es obligatoria"]
-    },
     cursos:{
         type:Array,
         required:[true,"Las clases son obligatorias"]
+    },
+    rol:{
+        type:String,
+        default:"TEACHER_ROLE"
     },
     estado:{
         type:Boolean,

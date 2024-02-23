@@ -1,13 +1,11 @@
+const Curso = require('../models/curso');
 const Estudiante = require('../models/estudiante');
 const Maestro = require("../models/maestros");
-const Usuario = require("../models/usuario");
-const Curso = require('../models/curso');
-var estudianteId = "";
 
 const existeEmailEstudiante = async (correo = "") => {
     const existeEmail = await Estudiante.findOne({ correo });
     if (existeEmail) {
-        throw new Error(`El email ${correo} ya está registrado`);
+        throw new Error(`El email ${correo} del estudiante ya está registrado`);
     }
 }
 
@@ -18,90 +16,42 @@ const existenteEmailMaestro = async (correo = "") => {
     }
 }
 
-const existenciaMaestroById = async (id = "") => {
-    const existeMaestro = await Maestro.findOne({ _id: id });
-    if (!existeMaestro) {
-        throw new Error(`El maestro con el ${id} no existe`);
-    }
-}
-
-const existeEstudianteById = async (id = "") => {
-    const existeEstudiante = await Estudiante.findOne({ _id: id });
-    estudianteId = id;
-    if (!existeEstudiante) {
-        throw new Error(`El estudiante con el ${id} no existe`);
-    }
-}
-
-const existeUsuarioById = async (id = "") => {
-    const existeUsuario = await Usuario.findOne({ _id: id });
-    if (!existeUsuario) {
-        throw new Error(`El usuario con id ${id} no existe`);
-    }
-}
-
-const existeCursoById= async(id="")=>{
-    const existeCurso = await Curso.findOne({_id:id});
-    if(!existeCurso){
+const existeCursoById = async (id = '') => {
+    const existeCurso = await Curso.findOne({ id });
+    if (existeCurso) {
         throw new Error(`El curso con id ${id} no existe`);
     }
 }
 
-const existeCorreoUsuario = async (correoUsuario = "") => {
-    const existeEmailUsuario = await Usuario.findOne({ correoUsuario: correoUsuario });
-    if (existeEmailUsuario) {
-        throw new Error(`El usuario con el correo ${correoUsuario} ya existe`);
+const cantidadDeCursos = async (cursos = [""]) => {
+    if (cursos && cursos.length > 3) {
+        throw new Error(`Solo debe ingresar 3 cursos`);
     }
 }
 
-const validarCorreoUsuario = async (correoUsuario = "") => {
-    const emailEstudiante = await Estudiante.findOne({ correo: correoUsuario });
-    const emailMaestro = await Maestro.findOne({ correo: correoUsuario });
-
-    if (!emailEstudiante) {
-        if (!emailMaestro) {
-            throw new Error(`El correo ingresado no corresponde a Estudiante ni profesor`);
-        }
-    }
-
-}
-
-const existeCurso1 = async (curso1 = "") => {
-    const estudiante = await Estudiante.findOne({ _id: estudianteId });
-    if (!curso1 == "") {
-        if (curso1 == estudiante.curso2 || curso1 == estudiante.curso3) {
-            throw new Error(`El curso ${curso1} ya fue asignado`);
+const verificarIdCursos = async (cursos = [""]) => {
+    var vuelta=0;
+    for (let buscarIdCurso of cursos) {
+        vuelta++;
+        const existeCurso = await Curso.findById({_id:buscarIdCurso});
+        if(!existeCurso){
+            throw new Error(`No existe el curso con ID: ${buscarIdCurso}`);
         }
     }
 }
 
-const existeCurso2 = async (curso2 = "") => {
-    const estudiante = await Estudiante.findOne({ _id: estudianteId });
-    if (!curso2 == "") {
-        if (curso2 == estudiante.curso1 || curso2 == estudiante.curso3) {
-            throw new Error(`El curso ${curso2} ya fue asignado`);
-        }
+const existeEstudianteById = async (id = "") => {
+    const existeEstudiante = await Estudiante.findOne({ id });
+    if (existeEstudiante) {
+        throw new Error(`El estudiante con id ${id} no existe`);
     }
 }
 
-const existeCurso3 = async (curso3 = "") => {
-    const estudiante = await Estudiante.findOne({ _id: estudianteId });
-    if (!curso3 == "") {
-        if (curso3 == estudiante.curso1 || curso3 == estudiante.curso2) {
-            throw new Error(`El curso ${curso3} ya fue asignado`);
-        }
-    }
-}
-
-module.exports = {existeCursoById,
-    validarCorreoUsuario,
-    existeCorreoUsuario,
-    existeUsuarioById,
+module.exports = {
     existenteEmailMaestro,
-    existenciaMaestroById,
-    existeCurso1,
-    existeCurso2,
-    existeCurso3,
-    existeEstudianteById,
-    existeEmailEstudiante
+    existeEmailEstudiante,
+    existeCursoById,
+    cantidadDeCursos,
+    verificarIdCursos,
+    existeEstudianteById
 }
