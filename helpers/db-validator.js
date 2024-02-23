@@ -45,18 +45,18 @@ const verificarIdCursos = async (cursos = [""]) => {
 }
 
 const verificarCursosRepetidos=async(cursos=[""])=>{
-    let existe;
-    cursos.forEach(idCurso =>{
-        existe = cursos.filter(curso=> curso==idCurso).length;
+    let existe=0;
+    for(let idCurso of cursos){
+        existe = cursos.filter(curso => curso==idCurso).length;
         if(existe>1){
             throw new Error(`El curso ${idCurso} se repite ${existe} veces.`);
         }
-    });   
+    };   
 }
 
 const existeEstudianteById = async (id = "") => {
-    const existeEstudiante = await Estudiante.findOne({ id });
-    if (existeEstudiante) {
+    const existeEstudiante = await Estudiante.findById({_id:id});
+    if (!existeEstudiante) {
         throw new Error(`El estudiante con id ${id} no existe`);
     }
 }
