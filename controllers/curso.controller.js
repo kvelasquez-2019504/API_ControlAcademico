@@ -28,10 +28,12 @@ const cursosGetById=async(req,res=response)=>{
 const cursosPost=async(req,res=response)=>{
     const {nombre} =req.body;
     const curso = new Curso({nombre});
+    const userAutenticado = req.maestro;
     await curso.save();
     res.status(200).json({
         msg:"El curso se ha guardado",
-        curso
+        curso,
+        userAutenticado
     });
 }
 

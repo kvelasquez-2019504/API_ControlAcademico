@@ -8,8 +8,9 @@ class Server{
         this.app = express();
         this.port = process.env.PORT;
         this.estudiantesPath = '/api/estudiantes';
-        //this.maestrosPath= '/api/maestros';
-        this.cursosPath='/api/cursos/';
+        this.maestrosPath= '/api/maestros';
+        this.cursosPath='/api/cursos';
+        this.authPath='/api/auth';
         this.conectarDB();
 
         this.middlewares();
@@ -29,8 +30,9 @@ class Server{
 
     routes(){
         this.app.use(this.estudiantesPath, require('../routes/estudiante.routes'));
-        //  this.app.use(this.maestrosPath, require('../routes/maestro.routes'));
+        this.app.use(this.maestrosPath, require('../routes/maestro.routes'));
         this.app.use(this.cursosPath,require("../routes/curso.routes"));
+        this.app.use(this.authPath, require("../routes/auth.routes"));
     }
 
     listen(){

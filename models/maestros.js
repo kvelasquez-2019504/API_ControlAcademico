@@ -17,10 +17,6 @@ const MaestroSchema = Schema({
         type:String,
         required:[true, "El password es obligatorio"]
     },
-    grado:{
-        type:String,
-        required:[true,"El grado es requerido"]
-    },
     cursos:{
         type:Array,
         required:[true,"Las clases son obligatorias"]
@@ -34,5 +30,11 @@ const MaestroSchema = Schema({
         default:true
     }
 });
+
+MaestroSchema.methods.toJSON=function(){
+    const {__v, password,_id,...maestro}=this.toObject();
+    maestro.uid=_id;
+    return maestro;
+}
 
 module.exports = model('Maestro', MaestroSchema);

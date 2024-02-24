@@ -1,6 +1,7 @@
 const Curso = require('../models/curso');
 const Estudiante = require('../models/estudiante');
 const Maestro = require("../models/maestros");
+
 const existeEmailEstudiante = async (correo = "") => {
     const existeEmail = await Estudiante.findOne({ correo });
     if (existeEmail) {
