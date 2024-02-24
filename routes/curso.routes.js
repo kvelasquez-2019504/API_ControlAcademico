@@ -21,12 +21,15 @@ router.get("/:id",[
 
 router.post('/', [
     validarJWT,
+    tieneRol('TEACHER_ROLE'),
     check("nombre","El nombre de la materia es obligatorio").not().isEmpty(),
     check("nombre").custom(validarNombreCurso),
     validarCampos
 ],cursosPost);
 
 router.put("/:id",[
+    validarJWT,
+    tieneRol('TEACHER_ROLE'),
     check("id","El id no corresponde a un ID de Mongo").isMongoId(),
     check("id").custom(existeCursoById),
     validarCampos

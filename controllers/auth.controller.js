@@ -1,7 +1,7 @@
 const { response } = require("express");
 const bcryptjs = require('bcryptjs')
 const Estudiante = require("../models/estudiante");
-const Maestro = require("../models/maestros");
+const Maestro = require("../models/maestro");
 const { generarJWT } = require("../helpers/generar-jwt");
 
 const login = async (req, res = response) => {
