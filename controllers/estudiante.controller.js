@@ -4,7 +4,7 @@ const Curso = require("../models/curso");
 const Estudiante = require('../models/estudiante');
 
 const estudiantesPut = async (req,res=response)=>{
-    const {id}=req.params;
+    const {id}=req.usuario;
     const {_id,estado,rol,correo,...resto}=req.body;
     const salto = bcrypt.genSaltSync();
     resto.password = bcrypt.hashSync(resto.password,salto);
@@ -17,7 +17,7 @@ const estudiantesPut = async (req,res=response)=>{
 }
 
 const estudiantesDelete = async (req, res=response)=>{
-    const {id}=req.params;
+    const {id}=req.usuario;
     await Estudiante.findByIdAndUpdate(id,{estado:false});
     const estudiante = await Estudiante.findOne({_id:id});
     res.status(200).json({
@@ -27,7 +27,7 @@ const estudiantesDelete = async (req, res=response)=>{
 }
 
 const verMisCursos=async(req,res=response)=>{
-    const {id}= req.params;
+    const {id}= req.usuario;
     const {nombres,apellidos, cursos}= await Estudiante.findOne({_id:id});
     let listaCursos =[];
     for(let idCurso of cursos){

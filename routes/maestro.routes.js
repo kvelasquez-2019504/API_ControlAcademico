@@ -5,16 +5,8 @@ const { verificarCursosRepetidos,
     verificarIdCursos,
     cantidadDeCursos,
     existenteEmailMaestro } = require('../helpers/db-validator');
-const { validarJWT } = require('../middlewares/validar-jwt');
-const { tieneRol } = require('../middlewares/validar-roles');
-const { verMisCursos, maestrosPost } = require('../controllers/maestro.controller');
+const { maestrosPost } = require('../controllers/maestro.controller');
 const router = new Router();
-
-router.get('/', [
-    validarJWT,
-    tieneRol('TEACHER_ROLE'),
-    validarCampos
-], verMisCursos);
 
 router.post('/', [
     check("nombres", "Los nombres son obligatorios").not().isEmpty(),

@@ -3,20 +3,28 @@ const {cursosDelete,
     cursosPut,
     cursosPost,
     cursosGetById,
-    cursosGet} = require('../controllers/curso.controller');
+    existeCursoMaestro} = require('../controllers/curso.controller');
 const {validarCampos}=require('../middlewares/validar-campos');
 const {existeCursoById,validarNombreCurso} = require('../helpers/db-validator');
 const {check} =require('express-validator');
 const { validarJWT } = require('../middlewares/validar-jwt');
 const { tieneRol } = require('../middlewares/validar-roles');
+const { verMisCursos } = require('../controllers/maestro.controller');
 const router = Router();
 
-router.get("/",cursosGet);
-
-router.get("/:id",[
-    check("id","El id no corresponde a un ID de Mongo").isMongoId(),
-    check("id").custom(existeCursoById),
+router.get('/', [
+    validarJWT,
+    tieneRol('TEACHER_ROLE'),
     validarCampos
+], verMisCursos);
+
+router.get("/:idCurso",[
+    validarJWT,
+    tieneRol('TEACHER_ROLE'),
+    check("idCurso","El id no corresponde a un ID de Mongo").isMongoId(),
+    check("idCurso").custom(existeCursoById),
+    validarCampos,
+    existeCursoMaestro
 ],cursosGetById);
 
 router.post('/', [

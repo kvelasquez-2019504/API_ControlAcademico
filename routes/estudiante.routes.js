@@ -1,5 +1,7 @@
 const {Router} = require('express');
 const {validarCampos}=require('../middlewares/validar-campos');
+const {validarJWT} = require('../middlewares/validar-jwt');
+const {tieneRol}=require('../middlewares/validar-roles');
 const {check} = require('express-validator');
 
 const {estudiantesDelete,verMisCursos,
@@ -12,13 +14,17 @@ const {verificarCursosRepetidos,
     existeEstudianteById} = require('../helpers/db-validator');
 const router = new Router();
 
-router.get('/:id',[
+router.get('/',[
+    validarJWT,
+    tieneRol('STUDENT_ROLE'),/*
     check("id","El ID debe ser de MongoDB").isMongoId(),
-    check("id").custom(existeEstudianteById),
+    check("id").custom(existeEstudianteById),*/
     validarCampos
 ],verMisCursos);
 
-router.put('/:id',[
+router.put('/',[
+    validarJWT,
+    tieneRol('STUDENT_ROLE'),
     check("nombres", "Los nombres son obligatorios").not().isEmpty(),
     check("apellidos","Los apellidos son obligatorios").not().isEmpty(),
     check("password","La contraseña es obligatoria y mayor a 6 caracteres").isLength({min:6}),
@@ -30,9 +36,11 @@ router.put('/:id',[
     validarCampos
 ],estudiantesPut);
 
-router.delete('/:id',[
+router.delete('/',[
+    validarJWT,
+    tieneRol('STUDENT_ROLE'),/*
     check("id","El ID debe ser de MongoDB").isMongoId(),
-    check("id").custom(existeEstudianteById),
+    check("id").custom(existeEstudianteById),*/
     validarCampos
 ],estudiantesDelete);
 
