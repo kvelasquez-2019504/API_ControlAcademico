@@ -55,13 +55,6 @@ const verificarCursosRepetidos=async(cursos=[""])=>{
     };   
 }
 
-const existeEstudianteById = async (id = "") => {
-    const existeEstudiante = await Estudiante.findById({_id:id});
-    if (!existeEstudiante) {
-        throw new Error(`El estudiante con id ${id} no existe`);
-    }
-}
-
 module.exports = {
     existenteEmailMaestro,
     existeEmailEstudiante,
@@ -69,6 +62,5 @@ module.exports = {
     cantidadDeCursos,
     verificarIdCursos,
     validarNombreCurso,
-    verificarCursosRepetidos,
-    existeEstudianteById
+    verificarCursosRepetidos
 }

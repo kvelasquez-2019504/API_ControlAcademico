@@ -1,5 +1,6 @@
 const {Router} = require('express');
-const {cursosDelete,
+const {deleteCursoEstudiante,
+    cursosDelete,
     cursosPut,
     cursosPost,
     cursosGetById,
@@ -35,19 +36,22 @@ router.post('/', [
     validarCampos
 ],cursosPost);
 
-router.put("/:id",[
+router.put("/:idCurso",[
     validarJWT,
     tieneRol('TEACHER_ROLE'),
-    check("id","El id no corresponde a un ID de Mongo").isMongoId(),
-    check("id").custom(existeCursoById),
-    validarCampos
+    check("idCurso","El id no corresponde a un ID de Mongo").isMongoId(),
+    check("idCurso").custom(existeCursoById),
+    validarCampos,
+    existeCursoMaestro
 ],cursosPut);
 
-router.delete("/:id",[
+router.delete("/:idCurso",[
     validarJWT,
     tieneRol('TEACHER_ROLE'),
-    check("id","El id no corresponde a un ID de Mongo").isMongoId(),
-    check("id").custom(existeCursoById),
+    check("idCurso","El id no corresponde a un ID de Mongo").isMongoId(),
+    check("idCurso").custom(existeCursoById),
+    existeCursoMaestro,
+    deleteCursoEstudiante,
     validarCampos
 ],cursosDelete);
 

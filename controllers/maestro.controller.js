@@ -17,6 +17,19 @@ const verMisCursos=async(req,res=response) =>{
     });
 }
 
+const maestrosPut=async (req,res=response)=>{
+    const {id}=req.usuario;
+    const {_id,estado,rol,correo,...resto}=req.body;
+    const salto = bcrypt.genSaltSync();
+    resto.password = bcrypt.hashSync(resto.password,salto);
+    await Maestro.findByIdAndUpdate(id,resto);
+    const maestroNew = await Maestro.findOne({_id:id});
+    res.status(200).json({
+        msg:"Se ha actualizado el maestro",
+        maestroNew
+    });
+}
+
 const maestrosPost = async (req, res = response) => {
     const { nombres, apellidos, correo, password,cursos} = req.body;
     const maestro = new Maestro({ nombres, apellidos, correo, password,cursos});
@@ -29,5 +42,6 @@ const maestrosPost = async (req, res = response) => {
 }
 
 module.exports={verMisCursos,
-    maestrosPost
+    maestrosPost,
+    maestrosPut
 }

@@ -7,11 +7,11 @@ const {check} = require('express-validator');
 const {estudiantesDelete,verMisCursos,
     estudiantesPut,
     estudiantesPost} =require('../controllers/estudiante.controller');
+
 const {verificarCursosRepetidos,
     verificarIdCursos,
     cantidadDeCursos,
-    existeEmailEstudiante,
-    existeEstudianteById} = require('../helpers/db-validator');
+    existeEmailEstudiante} = require('../helpers/db-validator');
 const router = new Router();
 
 router.get('/',[
