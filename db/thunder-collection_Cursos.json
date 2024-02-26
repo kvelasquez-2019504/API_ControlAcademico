@@ -1,0 +1,109 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Cursos",
+    "dateExported": "2024-02-26T00:11:36.825Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "48befdd3-3519-4c35-a37b-3a8e2df27b31",
+            "colId": "281645f8-ec77-4550-8ef9-55e8fbcaeb3b",
+            "containerId": "",
+            "name": "cursosGet",
+            "url": "http://localhost:3000/api/cursos",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-02-23T14:51:34.603Z",
+            "modified": "2024-02-26T00:08:25.820Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ5ODM3NTFjNThiYWIwYTRmMDgxN2QiLCJpYXQiOjE3MDg5MDU3NjYsImV4cCI6MTcwODk1OTc2Nn0.TUA8MjH-srfyl5f4o-WDrXncbZ3SL5YrTHOoZHPCujk"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "e0f2a172-ea2d-4034-9b3b-4643f1c45591",
+            "colId": "281645f8-ec77-4550-8ef9-55e8fbcaeb3b",
+            "containerId": "",
+            "name": "cursosGetById",
+            "url": "http://localhost:3000/api/cursos/65d97f91470ee6ed85a22f5b",
+            "method": "GET",
+            "sortNum": 15000,
+            "created": "2024-02-23T14:51:34.607Z",
+            "modified": "2024-02-25T05:55:34.719Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ5ODM3NTFjNThiYWIwYTRmMDgxN2QiLCJpYXQiOjE3MDg4MzU2OTEsImV4cCI6MTcwODg4OTY5MX0.cBpypHbpIvcP6yhfQsCWOvFuvT5MqALi04dj86TeU10"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "640858d2-cb8c-4087-b116-8e4e63ef91ca",
+            "colId": "281645f8-ec77-4550-8ef9-55e8fbcaeb3b",
+            "containerId": "",
+            "name": "cursosPost",
+            "url": "http://localhost:3000/api/cursos",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-02-23T14:51:34.604Z",
+            "modified": "2024-02-24T05:32:31.388Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "[\n  {\n    \"nombre\": \"MATEMATICA\"\n  },\n  {\n    \"nombre\": \"INGLES\"\n  },\n  {\n    \"nombre\": \"COMUNICACION Y LENGUAJE\"\n  },\n  {\n    \"nombre\": \"CALCULO\"\n  }\n]",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "5c354185-7e10-4987-8164-a0c3ba5440bb",
+            "colId": "281645f8-ec77-4550-8ef9-55e8fbcaeb3b",
+            "containerId": "",
+            "name": "cursosPut",
+            "url": "http://localhost:3000/api/cursos/65d97f91470ee6ed85a22f5b",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2024-02-23T14:51:34.605Z",
+            "modified": "2024-02-25T06:05:44.895Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ5ODM3NTFjNThiYWIwYTRmMDgxN2QiLCJpYXQiOjE3MDg4MzU2OTEsImV4cCI6MTcwODg4OTY5MX0.cBpypHbpIvcP6yhfQsCWOvFuvT5MqALi04dj86TeU10"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\":\"EDUCACION FISICA\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "bd81897d-8c27-4d66-9506-c649541d1140",
+            "colId": "281645f8-ec77-4550-8ef9-55e8fbcaeb3b",
+            "containerId": "",
+            "name": "cursosDelete",
+            "url": "http://localhost:3000/api/cursos/65d97f91470ee6ed85a22f5d",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2024-02-23T14:51:34.606Z",
+            "modified": "2024-02-26T00:07:57.776Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWQ5ODM3NTFjNThiYWIwYTRmMDgxN2QiLCJpYXQiOjE3MDg4ODk4MjcsImV4cCI6MTcwODk0MzgyN30.dXFn_YVpC3Czmfo_Ad7Y4yoUGKJlix56qu8bkbBALrg"
+                }
+            ],
+            "params": [],
+            "tests": []
+        }
+    ]
+}

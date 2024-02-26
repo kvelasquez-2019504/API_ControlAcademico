@@ -1,0 +1,90 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Estudiantes",
+    "dateExported": "2024-02-26T00:12:02.220Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "c829b93b-569a-46c2-a703-b2629e9f2e74",
+            "colId": "441aff63-ef38-4245-b5c0-b7b4e2be9699",
+            "containerId": "",
+            "name": "estudiantesPost",
+            "url": "http://localhost:3000/api/estudiantes/",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-02-23T15:11:00.046Z",
+            "modified": "2024-02-25T18:26:15.882Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombres\": \"Stephan\",\n  \"apellidos\": \"Cardenas\",\n  \"correo\": \"scardenas@kinal.edu.gt\",\n  \"password\": \"123456\",\n  \"cursos\":[\"65d97f91470ee6ed85a22f5e\",\"65d97f91470ee6ed85a22f5c\",\"65d98366470ee6ed85a22f62\"]\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "9a0ed78f-dbd3-4a24-998b-499a73e19a1f",
+            "colId": "441aff63-ef38-4245-b5c0-b7b4e2be9699",
+            "containerId": "",
+            "name": "estudiantesPut",
+            "url": "http://localhost:3000/api/estudiantes",
+            "method": "PUT",
+            "sortNum": 50000,
+            "created": "2024-02-23T15:11:00.048Z",
+            "modified": "2024-02-26T00:01:37.026Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWRhYWIwNmU2ZmY3Y2U0ZTcwZTdjMjMiLCJpYXQiOjE3MDg5MDM1NzYsImV4cCI6MTcwODk1NzU3Nn0.ro1WB6IwcvW2wa2u9KX9dlYZJOVfUfisy5EkZPpmiAc"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombres\":\"Tony\",\n  \"apellidos\":\"Stark\",\n  \"password\":\"123456\",\n  \"cursos\":[\"65d97f91470ee6ed85a22f5b\",\"65d97f91470ee6ed85a22f5c\"]\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "13ce8a17-07f5-4a17-90c9-1d5e7ebaf083",
+            "colId": "441aff63-ef38-4245-b5c0-b7b4e2be9699",
+            "containerId": "",
+            "name": "estudiantesDelete",
+            "url": "http://localhost:3000/api/estudiantes",
+            "method": "DELETE",
+            "sortNum": 60000,
+            "created": "2024-02-23T15:11:00.050Z",
+            "modified": "2024-02-25T03:17:27.639Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWRhYWIwNmU2ZmY3Y2U0ZTcwZTdjMjMiLCJpYXQiOjE3MDg4Mjk2ODgsImV4cCI6MTcwODgzMzI4OH0.w_v_aUjVAJfnBmwbhFwGNAgB76pGWeWCbYHnpO7bGVY"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "42ea820e-2693-4a06-bce6-8128ff9907bd",
+            "colId": "441aff63-ef38-4245-b5c0-b7b4e2be9699",
+            "containerId": "",
+            "name": "estudiantesCursos",
+            "url": "http://localhost:3000/api/estudiantes",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2024-02-23T15:11:00.051Z",
+            "modified": "2024-02-25T23:10:38.577Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWRiODY1YmRjN2I5NGM0Y2VhNWE5YzgiLCJpYXQiOjE3MDg5MDIwMTUsImV4cCI6MTcwODk1NjAxNX0.WyQRg84_oP4W-WgLkVaN4OkbX3dPUcJjslv38xg0sqE"
+                }
+            ],
+            "params": [],
+            "tests": []
+        }
+    ]
+}
